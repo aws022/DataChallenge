@@ -18,10 +18,22 @@ else:
     print("File found, proceeding with reading.")
 
 
-df_test = pd.read_csv(hot_100_raw_file, nrows=5)  # Load first 5 rows without filtering
+hot_100 = pd.read_csv(hot_100_raw_file)  # Load first 5 rows without filtering
+love_songs = pd.read_csv(love_songs_raw_file)
+rolling_stone = pd.read_csv(rolling_stone_raw_file)
 
-print(df_test.columns)
+''' Ideas
+
+1. Artists with the most songs on the Billboard
 
 
+2. Best years for music
+    Years in Rolling stone 500 with the most songs from that year
 
-# Get artists with the most weeks on chart
+
+3. Nostalgia - Is Generation Z causing older songs to be added to the 
+    Billboard 100 and the Rolling Stone 500
+    
+    * Looking at 'Years Between Debut and Top 500 Album' in Rolling Stone 500
+    and '2020-2003 Differential'
+'''
