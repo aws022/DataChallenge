@@ -28,10 +28,14 @@ if not os.path.exists(rolling_stone_path):
 else:
     print("File found, proceeding with reading.")
 
-
 hot_100 = pd.read_csv(hot_100_path)
 love_songs = pd.read_csv(love_songs_path)
 rolling_stone = pd.read_csv(rolling_stone_path)
+
+
+
+
+
 
 
 # Convert 'chart_week' to datetime if it's not already
@@ -51,12 +55,20 @@ hot_100['Weeks Bin'] = pd.cut(hot_100['wks_on_chart'], bins=wks_bins, labels=wks
 # Count the number of songs per (Decade, Weeks Bin)
 weeks_trend = hot_100.groupby(['Decade', 'Weeks Bin']).size().unstack().fillna(0)
 
+
+
+
+# Calculate the correlation matrix
+
+
+
+# Viz
 # Plot the heatmap to show trends over time
 plt.figure(figsize=(12, 6))
-sns.heatmap(weeks_trend, annot=True, fmt=".0f", cmap="viridis", linewidths=0.5)
+sns.heatmap(weeks_trend, annot=True, fmt=".0f", cmap="coolwarm", linewidths=0.5)
 
 # Formatting
-plt.xlabel("Weeks on Chart (Binned)")
+plt.xlabel("Weeks on Chart")
 plt.ylabel("Decade of Chart Appearance")
 plt.title("Number of Songs per Weeks-on-Chart Bin by Decade")
 
@@ -70,6 +82,3 @@ most_popular = hot_100[['title', 'wks_on_chart']]
 
 # Sort by 'wks_on_chart' in descending order (most weeks first)
 most_popular.sort_values(by='wks_on_chart', ascending=False, inplace=True)
-
-# Display the sorted DataFrame
-print(most_popular.head(20))
