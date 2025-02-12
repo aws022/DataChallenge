@@ -62,3 +62,14 @@ plt.title("Number of Songs per Weeks-on-Chart Bin by Decade")
 
 # Show plot
 plt.show()
+
+import pandas as pd
+
+# Select only 'title' and 'wks_on_chart' columns
+most_popular = hot_100[['title', 'wks_on_chart']]
+
+# Sort by 'wks_on_chart' in descending order (most weeks first)
+most_popular.sort_values(by='wks_on_chart', ascending=False, inplace=True)
+
+# Display the sorted DataFrame
+print(most_popular.head(20))

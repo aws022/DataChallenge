@@ -52,4 +52,6 @@ rolling_stone = pd.read_csv(rolling_stone_path)
 5. Average age at top 500 album over time
 '''
 
-
+print(hot_100.columns)
+print(love_songs.columns)
+print(rolling_stone.columns)
