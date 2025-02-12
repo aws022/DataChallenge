@@ -61,7 +61,6 @@ hot_100['Weeks Bin'] = pd.cut(hot_100['wks_on_chart'], bins=wks_bins, labels=wks
 # Count the number of songs per (Decade, Weeks Bin)
 weeks_trend = hot_100.groupby(['Decade', 'Weeks Bin']).size().unstack().fillna(0)
 
-
 # Plot the heatmap to show trends over time
 plt.figure(figsize=(12, 6))
 sns.heatmap(weeks_trend, annot=True, fmt=".0f", cmap="coolwarm", linewidths=0.5)
@@ -75,4 +74,26 @@ plt.title("Number of Songs on Hot 100 by week")
 plt.show()
 
 
-#Bar graph of each bin over each decade
+#Line plot of each bin over each decade
+# Reset index so 'Decade' is a column
+weeks_trend_reset = weeks_trend.reset_index()
+
+# Melt the DataFrame to long format for plotting
+weeks_trend_long = weeks_trend_reset.melt(id_vars="Decade", var_name="Weeks Bin", value_name="Count")
+
+# Ensure the 'Weeks Bin' is in the correct order
+weeks_trend_long["Weeks Bin"] = pd.Categorical(weeks_trend_long["Weeks Bin"], categories=wks_labels, ordered=True)
+
+# Create the line plot
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=weeks_trend_long, x="Weeks Bin", y="Count", hue="Decade", marker="o")
+
+# Formatting
+plt.xlabel("Weeks on Chart Bin")
+plt.ylabel("Number of Songs")
+plt.title("Number of Songs on Hot 100 by Weeks on Chart Across Decades")
+plt.xticks(rotation=45)  # Rotate for better readability
+plt.legend(title="Decade", bbox_to_anchor=(1.05, 1), loc="upper left")  # Move legend outside
+
+# Show the plot
+plt.show()
