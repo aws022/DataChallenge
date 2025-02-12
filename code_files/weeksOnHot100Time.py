@@ -49,6 +49,12 @@ hot_100['Decade'] = hot_100['Decade'].astype(str) + "s"  # Format as "1960s", "1
 wks_bins = list(range(0, 101, 10))  # Bins from 0-9, 10-19, ..., 90-99 weeks
 wks_labels = [f"{i}-{i+9}" for i in range(0, 100, 10)]  # Labels like "0-9", "10-19", etc.
 
+
+# Unique top ranking songs
+#print('hot_100.columns:',hot_100.columns)
+#hot_100 = hot_100.drop_duplicates(subset=['title', 'performer'], keep='first')
+
+
 # Assign each song to a weeks-on-chart bin
 hot_100['Weeks Bin'] = pd.cut(hot_100['wks_on_chart'], bins=wks_bins, labels=wks_labels, right=False)
 
@@ -56,13 +62,6 @@ hot_100['Weeks Bin'] = pd.cut(hot_100['wks_on_chart'], bins=wks_bins, labels=wks
 weeks_trend = hot_100.groupby(['Decade', 'Weeks Bin']).size().unstack().fillna(0)
 
 
-
-
-# Calculate the correlation matrix
-
-
-
-# Viz
 # Plot the heatmap to show trends over time
 plt.figure(figsize=(12, 6))
 sns.heatmap(weeks_trend, annot=True, fmt=".0f", cmap="coolwarm", linewidths=0.5)
@@ -70,15 +69,10 @@ sns.heatmap(weeks_trend, annot=True, fmt=".0f", cmap="coolwarm", linewidths=0.5)
 # Formatting
 plt.xlabel("Weeks on Chart")
 plt.ylabel("Decade of Chart Appearance")
-plt.title("Number of Songs per Weeks-on-Chart Bin by Decade")
+plt.title("Number of Songs on Hot 100 by week")
 
 # Show plot
 plt.show()
 
-import pandas as pd
 
-# Select only 'title' and 'wks_on_chart' columns
-most_popular = hot_100[['title', 'wks_on_chart']]
-
-# Sort by 'wks_on_chart' in descending order (most weeks first)
-most_popular.sort_values(by='wks_on_chart', ascending=False, inplace=True)
+#Bar graph of each bin over each decade
