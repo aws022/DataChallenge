@@ -50,8 +50,23 @@ rolling_stone = pd.read_csv(rolling_stone_path)
     THIS COLUMN IS INCOMPLETE AND DOES NOT GIVE USEFUL DATA
     
 5. Average age at top 500 album over time
-'''
 
+
+
+
+
+
+Meeting notes 2/12
+Look at spotify popularity and predict weeks on chart of a song
+For each song get peak weeks on chart to give us how long a song can possibly be on the chart
+
+
+'''
+print("Hot 100")
 print(hot_100.columns)
+
+print("Love songs")
 print(love_songs.columns)
+
+print("Rolling stone")
 print(rolling_stone.columns)

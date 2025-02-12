@@ -1,3 +1,10 @@
+'''
+Can use as lin reg template code
+
+Shows prediction of a song's status on the 2003 list
+versus the 2012 list
+'''
+
 import os
 import pandas as pd
 from sklearn.feature_selection import mutual_info_regression
