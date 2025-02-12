@@ -1,7 +1,11 @@
-
 import os
-from traceback import print_tb
 import pandas as pd
+from sklearn.feature_selection import mutual_info_regression
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from scipy.stats import pearsonr
+import matplotlib.pyplot as plt
+
 
 # File read in
 parent_dir = os.path.dirname(os.getcwd())
@@ -56,9 +60,8 @@ rolling_stone = pd.read_csv(rolling_stone_path)
 
 
 
-Meeting notes 2/12
-Look at spotify popularity and predict weeks on chart of a song
-For each song get peak weeks on chart to give us how long a song can possibly be on the chart
+Peak position in spotify -> weeks on chart
+
 
 
 '''
