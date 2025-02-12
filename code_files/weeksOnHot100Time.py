@@ -93,7 +93,25 @@ plt.xlabel("Weeks on Chart Bin")
 plt.ylabel("Number of Songs")
 plt.title("Number of Songs on Hot 100 by Weeks on Chart Across Decades")
 plt.xticks(rotation=45)  # Rotate for better readability
-plt.legend(title="Decade", bbox_to_anchor=(1.05, 1), loc="upper left")  # Move legend outside
+plt.legend(title="Decade", bbox_to_anchor=(0.85, 1), loc="upper left")  # Move legend outside
+
+# Show the plot
+plt.show()
+
+
+# Filter for Weeks Bin 30 and onward
+weeks_30_onward = weeks_trend_long[weeks_trend_long["Weeks Bin"].isin(wks_labels[3:])]  # Skipping first 3 bins (0-9, 10-19, 20-29)
+
+# Create the line plot
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=weeks_30_onward, x="Weeks Bin", y="Count", hue="Decade", marker="o")
+
+# Formatting
+plt.xlabel("Weeks on Chart Bin")
+plt.ylabel("Number of Songs")
+plt.title("Number of Songs on Hot 100 by Weeks on Chart (30+ Weeks)")
+plt.xticks(rotation=45)  # Rotate for better readability
+plt.legend(title="Decade", bbox_to_anchor=(0.85, 1), loc="upper left")  # Move legend outside
 
 # Show the plot
 plt.show()
