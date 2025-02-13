@@ -1,0 +1,36 @@
+# Artist Success Trajectory Predictor
+
+## Overview
+This project implements a data science model to predict the success trajectories of artists based on historical performance data, Spotify popularity, and other metrics. The analysis is visualized through various plots to provide insights into the factors contributing to an artist's success.
+
+## Key Components
+
+### Data Preprocessing and Cleaning
+- Data is sourced from Billboard Hot 100 and Rolling Stone datasets.
+- The data is cleaned and validated to ensure accuracy and consistency.
+
+### Feature Engineering
+- **Historical Peak**: Represents the maximum number of weeks an artist's song has stayed on the chart. It is a key indicator of past success and is weighted heavily in the prediction model.
+- **Consistency**: Measures the average number of weeks an artist's songs stay on the chart.
+- **Spotify Popularity**: Captures the current popularity of the artist on Spotify.
+
+### Model Development
+- The model calculates a prediction score for each artist using a weighted combination of historical peak (50%), consistency (30%), and Spotify popularity (30%).
+- Additional features such as career span, performance trends, and success rate indicators are engineered to enhance the model.
+
+### Visualization
+- **Top Artists Prediction**: A horizontal bar plot showing the predicted success of the top 10 artists based on the model.
+- **Success Score Distribution**: A histogram with a KDE line showing the distribution of success scores among artists.
+- **Spotify Chart Correlation**: A scatter plot with a trend line illustrating the relationship between Spotify popularity and chart success.
+
+## Methodology
+- The prediction model uses historical data to forecast future success, emphasizing the importance of past chart performance.
+- The analysis includes a comprehensive dashboard with multiple visualizations to provide a holistic view of artist success metrics.
+
+## Conclusion
+This project provides a robust framework for predicting artist success, leveraging historical data and current popularity metrics. The visualizations offer valuable insights for stakeholders to understand the dynamics of the music industry and make informed decisions.
+
+## Presentation Notes
+- Highlight the importance of historical peak as a strong predictor of future success.
+- Discuss the role of Spotify popularity in capturing current trends.
+- Use the visualizations to demonstrate the model's predictions and insights.
